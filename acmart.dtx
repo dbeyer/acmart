@@ -2256,7 +2256,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2024/10/19 v2.10 Typesetting articles for the Association for Computing Machinery]
+[2024/12/07 v2.11 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -5366,7 +5366,7 @@
 %   The book ISBN
 %    \begin{macrocode}
 \def\acmISBN#1{\def\@acmISBN{#1}}
-\acmISBN{978-x-xxxx-xxxx-x/YY/MM}
+\acmISBN{978-x-xxxx-xxxx-x/YYYY/MM}
 %    \end{macrocode}
 %
 % \end{macro}
@@ -6358,7 +6358,9 @@
 % publications}
 % \changes{v2.00}{2023/10/24}{Deleted acmPrice}
 % \changes{v2.00}{2023/11/05}{Added ``ACM'' for papers}
-% \changes{v2.03}{2024/12/04}{Special processing for conferences in TOG}
+% \changes{v2.03}{2023/12/04}{Special processing for conferences in
+% TOG}
+% \changes{v2.11}{2024/12/07}{Deleted conference date from bibstrip}
 %   The (in)famous \cs{maketitle}.  Note that in |sigchi-a| mode, authors
 %   are \emph{not} in the title box.
 %
@@ -6427,7 +6429,7 @@
          \if@ACM@engage
             {\itshape \@acmBooktitle, \@acmYear.}\par
          \else 
-         {\itshape \acmConference@shortname, \acmConference@date, \acmConference@venue}\par
+         {\itshape \acmConference@shortname, \acmConference@venue}\par
          \fi
        \fi
     \fi
