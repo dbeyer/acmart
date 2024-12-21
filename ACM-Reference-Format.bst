@@ -630,11 +630,7 @@ FUNCTION { output.doi } % UTAH
   doi empty.or.unknown
     { }
     {
-      %% Use \urldef here for the same reason it is used in output.url,
-      %% see output.url for further discussion.
-      "\urldef\tempurl%" writeln
-      "\url{https://doi.org/" strip.doi * "}" * writeln
-      "\showDOI{\tempurl}" writeln
+      "\showDOI{\href{https://doi.org/" strip.doi * "}{doi:\nolinkurl{" * strip.doi  * "}}}" * writeln
     }
   if$
 }
