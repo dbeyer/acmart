@@ -15,6 +15,8 @@ Changes
 Version 2.11   Conference date is no longer printed in bibstrip.
 	       ISBN now uses 4-digit year
 	       DOI in bibliography is now output as doi:XX.XXXX/XXXXX.XXXX
+	       Changed URL in Creative Commons licenses (deleted
+	       trailing /legalcode)
 
 Version 2.10.  Bug fixes.  Documentation update.
 
