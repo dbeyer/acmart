@@ -507,7 +507,7 @@ FUNCTION { format.year }
   year empty.or.unknown
     { date empty.or.unknown
         { "[n.\,d.]" }
-	{ date }
+	{ date #1 #4 substring$ }
       if$
     }
     { year }
@@ -798,7 +798,7 @@ FUNCTION { output.year.check }
        {
           "using date in " cite$ * warning$
           write$
-          " \bibinfo{year}{" date * "}" *
+          " \bibinfo{year}{" date #1 #4 substring$ * "}" *
           "\natexlab{" extra.label * "}" * *
           mid.sentence 'output.state :=
         }
@@ -2021,7 +2021,7 @@ FUNCTION { calc.basic.label }
   year empty.or.unknown
     { date empty.or.unknown
         { "{[n.\,d.]}" }
-	{ date field.or.null purify$ #-1 #4 substring$}
+	{ date field.or.null purify$ #1 #4 substring$}
       if$
     }
     { year field.or.null purify$ #-1 #4 substring$}
@@ -2073,7 +2073,7 @@ FUNCTION { calc.label }
   year empty.or.unknown
     { date empty.or.unknown
         { "{[n.\,d.]}" }
-	{ date field.or.null purify$ #-1 #4 substring$}
+	{ date field.or.null purify$ #1 #4 substring$}
       if$
     }
     { year field.or.null purify$ #-1 #4 substring$}
