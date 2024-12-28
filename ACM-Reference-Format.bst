@@ -787,10 +787,22 @@ FUNCTION { output.year.check }
 { % warn if year empty, output top string and leave " YEAR<label>" on stack in mid-sentence
   year empty.or.unknown
      { "empty year in " cite$ * warning$
-       write$
-       " \bibinfo{year}{[n.\,d.]}"
-       "\natexlab{" extra.label * "}" * *
-       mid.sentence 'output.state :=
+       date empty.or.unknown
+       {
+          "using n.d. in " cite$ * warning$
+          write$
+          " \bibinfo{year}{[n.\,d.]}"
+          "\natexlab{" extra.label * "}" * *
+          mid.sentence 'output.state :=
+       }
+       {
+          "using date in " cite$ * warning$
+          write$
+          " \bibinfo{year}{" date * "}" *
+          "\natexlab{" extra.label * "}" * *
+          mid.sentence 'output.state :=
+        }
+	if$
      }
      { write$
        " \bibinfo{year}{" year * "}"  *
@@ -2007,7 +2019,11 @@ FUNCTION { calc.basic.label }
   if$
   duplicate$
   year empty.or.unknown
-    { "{[n.\,d.]}" }
+    { date empty.or.unknown
+        { "{[n.\,d.]}" }
+	{ date field.or.null purify$ #-1 #4 substring$}
+      if$
+    }
     { year field.or.null purify$ #-1 #4 substring$}
   if$
   *
@@ -2055,7 +2071,11 @@ FUNCTION { calc.label }
   % save the year for sort processing afterwards (adding a, b, c, etc.)
   %
   year empty.or.unknown
-    { "{[n.\,d.]}" }
+    { date empty.or.unknown
+        { "{[n.\,d.]}" }
+	{ date field.or.null purify$ #-1 #4 substring$}
+      if$
+    }
     { year field.or.null purify$ #-1 #4 substring$}
   if$
   'label.year :=
