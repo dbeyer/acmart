@@ -501,10 +501,15 @@ FUNCTION { format.articleno }
 FUNCTION { format.year }
 { % push year string or "[n.\,d.]" onto output stack
   %% Because year is a mandatory field, we always force SOMETHING
-  %% to be output
+  %% to be output.  If we do not know year but know date, we push  date
+  %% as the last resort
   "\bibinfo{year}{"
   year empty.or.unknown
-    { "[n.\,d.]" }
+    { date empty.or.unknown
+        { "[n.\,d.]" }
+	{ date }
+      if$
+    }
     { year }
   if$
   *  "}" *
