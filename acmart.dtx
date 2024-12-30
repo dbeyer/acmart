@@ -3950,23 +3950,27 @@
 % monotype font declaration}
 % \changes{v1.74}{2020/10/25}{Changed the order of font loading}%
 % We use Libertine throughout.
+% \changes{v2.12}{2024/12/29}{Use unicode-math and libertinus for Unicode engines}%
+% We use Libertine throughout.
 %    \begin{macrocode}
 \if@ACM@newfonts
-  \RequirePackage[T1]{fontenc}
   % Note that the order in which packages are loaded matters,
   % and the correct order depends on the LaTeX engine used.
   % See https://github.com/borisveytsman/acmart/issues/402
   % and https://github.com/borisveytsman/acmart/issues/410
   \ifxetex
-    \RequirePackage[libertine]{newtxmath}
+    \RequirePackage{unicode-math}
+    \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
     \RequirePackage[tt=false]{libertine}
     \setmonofont[StylisticSet=3]{inconsolata}
   \else
     \ifluatex
-      \RequirePackage[libertine]{newtxmath}
+      \RequirePackage{unicode-math}
+      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
       \RequirePackage[tt=false]{libertine}
       \setmonofont[StylisticSet=3]{inconsolata}
     \else
+       \RequirePackage[T1]{fontenc}
        \RequirePackage[tt=false, type1=true]{libertine}
        \RequirePackage[varqu]{zi4}
        \RequirePackage[libertine]{newtxmath}
