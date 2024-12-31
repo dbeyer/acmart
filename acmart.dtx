@@ -6442,7 +6442,9 @@
     \if@printcopyright
       \copyright\ \@copyrightyear\ \@copyrightowner\\
     \else
-      \@copyrightyear.\
+      \ifx\@copyrightyear\@empty\else  
+        \@copyrightyear.\
+      \fi
     \fi
     \if@ACM@manuscript
       Manuscript submitted to ACM\\
