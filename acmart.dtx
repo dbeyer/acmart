@@ -3951,6 +3951,7 @@
 % \changes{v1.74}{2020/10/25}{Changed the order of font loading}%
 % We use Libertine throughout.
 % \changes{v2.12}{2024/12/29}{Use unicode-math and libertinus for Unicode engines}%
+% \changes{v2.13}{2025/01/11}{Added mathcal in unicode mode}%
 % We use Libertine throughout.
 %    \begin{macrocode}
 \if@ACM@newfonts
@@ -3960,13 +3961,15 @@
   % and https://github.com/borisveytsman/acmart/issues/410
   \ifxetex
     \RequirePackage{unicode-math}
-    \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+    \setmathfont[Scale=MatchUppercase]{LibertinusMath-Regular.otf}
+    \setmathfont{latinmodern-math.otf}[range={cal}]
     \RequirePackage[tt=false]{libertine}
     \setmonofont[StylisticSet=3]{inconsolata}
   \else
     \ifluatex
       \RequirePackage{unicode-math}
-      \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
+      \setmathfont[Scale=MatchUppercase]{LibertinusMath-Regular.otf}
+      \setmathfont{latinmodern-math.otf}[range={cal}]
       \RequirePackage[tt=false]{libertine}
       \setmonofont[StylisticSet=3]{inconsolata}
     \else

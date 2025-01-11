@@ -12,6 +12,9 @@ The production version is the one on CTAN and ACM sites.
 
 Changes
 
+Version 2.13   Documentation update
+	       Added mathcal in unicode mode
+
 Version 2.12   Bug fixes
 	       Switched to unicode-math and libertinus for Unicode engines
 
