@@ -14,6 +14,7 @@ Changes
 
 Version 2.13   Documentation update
 	       Added mathcal in unicode mode
+	       Bug fixes
 
 Version 2.12   Bug fixes
 	       Switched to unicode-math and libertinus for Unicode engines
