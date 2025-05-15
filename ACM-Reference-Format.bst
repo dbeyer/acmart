@@ -65,6 +65,7 @@ ENTRY
         issn          % UTAH
         lccn          % UTAH
 	distinctURL   % whether to print url if doi is present
+	archived      % Where the url is archived
   }
   {}
   { label.year extra.label sort.year sort.label basic.label.year}
@@ -775,7 +776,15 @@ FUNCTION { output.url } % UTAH
             { "" }
             { "Retrieved " lastaccessed * " from " * }
           if$
-          "\tempurl}" * writeln
+          "\tempurl" *
+	  archived empty.or.unknown
+	    { }
+	    {"\urldef\tempurla%" writeln
+	      "\url{" archived * "}%" * writeln
+	      ", archived at [\tempurla]" *
+	    }
+	  if$
+	  "}" * writeln
       }
       if$
   }
