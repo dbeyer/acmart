@@ -1620,7 +1620,13 @@
 %
 % There are several customized \BibTeX\ entry types and fields in the ACM
 % style file \path{ACM-Reference-Format.bst} that you may want to be
-% aware of.
+% aware of.  You can find many examples on the Web page
+% \url{https://www.acm.org/publications/authors/bibtex-formatting}. 
+%
+%
+%\subsubsection{URL, DOI, eprint}
+%
+%
 %
 % The style supports the fields \path{doi} and \path{url}, for example,
 % \begin{verbatim}
@@ -1631,6 +1637,24 @@
 % However, there is a special field \path{distinctURL}.  If it is
 % present and is not zero, URL is printed even if DOI is present.
 %
+% The dynamic nature of Internet makes URLs not permanent: sometimes
+% they disappear or change.  The problem of ``stale links'' exists
+% from the early days of WWW.  That is why ACM prefers DOIs to URLs:
+% unlike the latter, the former are supposed to work forever.
+% However, if you really need to use URLs, there are two facilities
+% that help to mitigate some problems with the URLs.  The field
+% \path{lastaccessed} gives the date when the given URL was visited
+% and had the information you saw.  Presumably, some service like
+% Internet Wayback Machine (\url{https://web.archive.org/}) allows the
+% reader to retrieve this link at the given date.  Moreover, sometimes
+% a page is explicitly archived by this or other service.  In this
+% case the field \path{archived} will give the reference ot the
+% archival version.  Examples:
+% \begin{verbatim}
+% lastaccessed = {March 2, 2005},
+% archived = {https://web.archive.org/web/20240505055615}
+% \end{verbatim}
+% 
 %
 % The style supports the arXiv-recommended fields \path{eprint} and
 % (optionally) \path{primaryclass}, for example,
@@ -1638,7 +1662,13 @@
 %  eprint =       "960935712",
 %  primaryclass = "cs",
 % \end{verbatim}
-% See the examples at \url{https://arxiv.org/help/hypertex/bibstyles}.
+
+%\subsubsection{Special entry types}
+%\label{sec:preprints}
+%
+%  
+% 
+% 
 %
 % There are several  special entry types. Types \path{online} and
 % \path{game} are used for Web pages and games, for example,
@@ -1676,7 +1706,8 @@
 %
 %
 % For these entry types you can use the \path{lastaccessed} field to add
-% the access date for the URL.
+% the access date for the URL and \path{archived} field to add the
+% archival link.  
 %
 %
 %
@@ -1729,6 +1760,62 @@
 %  year =         "1996",
 % }
 % \end{verbatim}
+%
+% Sometimes a work is presented at meeting, but is not (yet)
+% published in the proceedings.  The entry type \path{presentation} is
+% used for this purpose.  The field \path{venue} is used for the place
+% of the meeting:
+% \begin{verbatim}
+% @Presentation{Reiser2014,
+%   author = {Brian J. Reiser}
+%   year = 2014,
+%   title = {Designing coherent storylines aligned with NGSS for the
+%            K-12 classroom},
+%   venue = {National Science Education Leadership Association
+%         Meeting, Boston, MA, USA},
+%   url = {https://www.academia.edu/6884962/}
+%  }
+% \end{verbatim}
+%  The URL, if present, may be accompanied by \path{lastaccessed} and
+%  \path{archived} links.
+%
+% A preprint can be cited using the entry \path{eprint} or its synonym
+% \path{preprint}, for example,
+% \begin{verbatim}
+% @Eprint{AnzarootPBM14,
+%   author    = {Sam Anzaroot and
+%                Alexandre Passos and
+%                David Belanger and
+%                Andrew McCallum},
+%   title     = {Learning Soft Linear Constraints with Application to
+%                   Citation Field Extraction},
+%   year      = {2014},
+%   archivePrefix = {arXiv},
+%   eprint    = {1403.1349},
+%   doi =    {10.48550/arXiv.1403.1349}
+% }
+% \end{verbatim}
+%
+% Sometimes you need to cite an article under review.  ACM prefers the
+% authors to use preprints for this purpose, but sometimes it is not
+% feasible.  In this case you can use the entry \path{underreview},
+% for example,
+% \begin{verbatim}
+% @underreview{Baggett2025,
+%   author = {R. Baggett and M. Simecek and C. Chambellan
+%             and K. Tsui and M. Fraune},
+%   year = 2025,
+%   title = {Fluidity in the Phased Framework of Technology
+%            Acceptance: Case Study to Gain a Holistic Understanding
+%            of (Older Adult) Participant Advancement Through
+%            Acceptance Phases with  Mobile Telepresence Robots}
+%   journal = {Robotics Aut. Systems}
+% }
+% \end{verbatim}
+%
+%
+%\subsubsection{Dates and sorting}
+%
 %
 % If you do not know the year of publication, the style will add
 % ``[n.\,d.]'' (for ``no date'') to the entry.
