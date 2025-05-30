@@ -1728,9 +1728,10 @@
 % }
 % \end{verbatim}
 %
-% For sources available as attachments to conference proceedings
-% and similar documents, you can use the usual \path{inproceedings}
-% entry type and set its \path{howpublished} field:
+% For sources available as supplemental material attached to
+% conference proceedings and similar documents, you can use the usual
+% \path{inproceedings} entry type and set its \path{howpublished}
+% field:
 % \begin{verbatim}
 % @Inproceedings{Novak03,
 %  author =       "Dave Novak",
@@ -2335,7 +2336,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2025/01/11 v2.13 Typesetting articles for the Association for Computing Machinery]
+[2025/05/30 v2.14 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -8911,6 +8912,58 @@
 \AtEndDocument{\ifx\baselinestretch\ACM@origbaselinestretch\else
   \ClassError{\@classname}{An attempt to redefine
     \string\baselinestretch\space detected.  Please do not do this for
+    ACM submissions!}\fi}
+%    \end{macrocode}
+%
+% \end{macro}
+% \begin{macro}{\ACM@origsection}
+% \changes{v2.14}{2025/05/30}{Added check whether the user changed
+% \cs{section}}
+% We produce an error if the user tries to change \cs{section}
+%    \begin{macrocode}
+\let\ACM@origsection\section
+\AtEndDocument{\ifx\section\ACM@origsection\else
+  \ClassError{\@classname}{An attempt to redefine
+    \string\section\space detected.  Please do not do this for
+    ACM submissions!}\fi}
+%    \end{macrocode}
+%
+% \end{macro}
+% \begin{macro}{\ACM@origsubsection}
+% \changes{v2.14}{2025/05/30}{Added check whether the user changed
+% \cs{subsection}}
+% We produce an error if the user tries to change \cs{subsection}
+%    \begin{macrocode}
+\let\ACM@origsubsection\subsection
+\AtEndDocument{\ifx\subsection\ACM@origsubsection\else
+  \ClassError{\@classname}{An attempt to redefine
+    \string\subsection\space detected.  Please do not do this for
+    ACM submissions!}\fi}
+%    \end{macrocode}
+%
+% \end{macro}
+% \begin{macro}{\ACM@origsubsubsection}
+% \changes{v2.14}{2025/05/30}{Added check whether the user changed
+% \cs{subsubsection}}
+% We produce an error if the user tries to change \cs{subsubsection}
+%    \begin{macrocode}
+\let\ACM@origsubsubsection\subsubsection
+\AtEndDocument{\ifx\subsubsection\ACM@origsubsubsection\else
+  \ClassError{\@classname}{An attempt to redefine
+    \string\subsubsection\space detected.  Please do not do this for
+    ACM submissions!}\fi}
+%    \end{macrocode}
+%
+% \end{macro}
+% \begin{macro}{\ACM@origparagraph}
+% \changes{v2.14}{2025/05/30}{Added check whether the user changed
+% \cs{paragraph}}
+% We produce an error if the user tries to change \cs{paragraph}
+%    \begin{macrocode}
+\let\ACM@origparagraph\paragraph
+\AtEndDocument{\ifx\paragraph\ACM@origparagraph\else
+  \ClassError{\@classname}{An attempt to redefine
+    \string\paragraph\space detected.  Please do not do this for
     ACM submissions!}\fi}
 %    \end{macrocode}
 %
