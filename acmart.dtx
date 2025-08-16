@@ -2336,7 +2336,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2025/05/30 v2.14 Typesetting articles for the Association for Computing Machinery]
+[2025/08/16 v2.15 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -7554,19 +7554,25 @@
 %
 %
 % \begin{macro}{\@authornotemark}
+% \changes{v2.15}{2025/08/16}{Added \string\hfuzz}
 % Adding a footnote mark to authors.  This version adds a ``normal''
-% footnote mark.
+% footnote mark.  Note that since we typeset the author in a box, we
+% get superflous box overfull; to protect against it we increase
+% |\hfuzz| 
 %    \begin{macrocode}
-\def\@authornotemark{\g@addto@macro\@currentauthors{\footnotemark\relax}}
+\def\@authornotemark{\g@addto@macro\@currentauthors{%
+    \advance\hfuzz by 5pt\relax\footnotemark\relax}}
 %    \end{macrocode}
 %
 % \end{macro}
 %
 % \begin{macro}{\@@authornotemark}
 % \changes{v1.39}{2017/05/14}{Added macro}
+% \changes{v2.15}{2025/08/16}{Added \string\hfuzz}
 % Adding a footnote mark to authors with a given number
 %    \begin{macrocode}
-\def\@@authornotemark#1{\g@addto@macro\@currentauthors{\footnotemark[#1]}}
+\def\@@authornotemark#1{\g@addto@macro\@currentauthors{%
+    \advance\hfuzz by 5pt\relax\footnotemark[#1]}}
 %    \end{macrocode}
 %
 % \end{macro}
