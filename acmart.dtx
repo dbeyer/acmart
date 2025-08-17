@@ -1448,7 +1448,19 @@
 %   \theoremstyle{acmdefinition}
 %   \newtheorem{remark}[theorem]{Remark}}
 % \end{verbatim}
-% 
+%
+% If you use \textsl{cleveref} and share counters between the
+% theorem-like constructs, you need to explicitly tell
+% \textsl{cleveref} the kind of the construct you use, for example,
+% \begin{verbatim}
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+%  % Theorems and lemmas share counters
+% ...
+% \begin{theorem}\label{thm:test} % This is a theorem
+%   ...
+% \begin{lemma}\label[lemma]{test-lemma} % This is a lemma
+% \end{verbatim}
 %
 %\subsection{Online-only and offline-only material}
 %\label{sec:ug_screen}
