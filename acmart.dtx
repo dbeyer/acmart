@@ -1630,7 +1630,12 @@
 % Note that before version~1.48 the command \cs{citeyear} put the year
 % in parentheses.  In version~1.48 and later it produces just the
 % year; the command \cs{citeyearpar} can be used to emulate its old
-% behavior.
+% behavior.  You can use these commands to produce in-text citations,
+% for example,
+% \begin{verbatim}
+% So we see that \citeauthor{Burano2026} 
+% proved this conjecture in \citeyear{Burano2026}~\cite{Burano2026}. 
+% \end{verbatim}
 %
 % There are several customized \BibTeX\ entry types and fields in the ACM
 % style file \path{ACM-Reference-Format.bst} that you may want to be
