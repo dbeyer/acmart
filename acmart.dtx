@@ -1923,6 +1923,36 @@
 % directory after running \verb|make| for templates showcasing
 % these Bib\LaTeX\ styles.
 
+%
+%
+%\subsubsection{Manual bibliography}
+%\label{sec:ug_manual_bibliography}
+%
+% Some people create bibliographies manually, writing down
+% \cs{bibitem} commands explicitly.  This approach is \emph{not}
+% recommended for ACM styles.  The reason is, ACM submissions, besides
+% being typeset, are also processed by special programs that extract
+% metadata and references.  Bibliographies created automatically with
+% ACM styles contain customized macros for these programs, for
+% example,
+% \begin{verbatim}
+% \bibitem[Ablamowicz and Fauser(2007)]%
+%         {Ablamowicz07}
+% \bibfield{author}{\bibinfo{person}{Rafal Ablamowicz} {and}
+%   \bibinfo{person}{Bertfried Fauser}.} \bibinfo{year}{2007}\natexlab{}.
+% \newblock \bibinfo{booktitle}{\emph{CLIFFORD: a Maple 11 Package for Clifford
+%   Algebra Computations, version 11}}.
+% \newblock
+% \urldef\tempurl%
+% \url{http://math.tntech.edu/rafal/cliff11/index.html}
+% \showURL{%
+% Retrieved February 28, 2008 from \tempurl} 
+% \end{verbatim}
+%
+% Manual bibliographies without these macros may slow down the
+% publication process, and thus are not recommended for ACM
+% submissions. 
+%
 %\subsection{Colors}
 %\label{sec:ug_colors}
 %
@@ -1965,36 +1995,6 @@
 %    \url{http://daprlab.com/ace/} for designing WCAG 2.0 compliant
 %    palettes.
 %  \end{enumerate}
-%
-%
-%
-%\subsubsection{Manual bibliography}
-%\label{sec:ug_manual_bibliography}
-%
-% Some people create bibliographies manually, writing down
-% \cs{bibitem} commands explicitly.  This approach is \emph{not}
-% recommended for ACM styles.  The reason is, ACM submissions, besides
-% being typeset, are also processed by special programs that extract
-% metadata and references.  Bibliographies created automatically with
-% ACM styles contain customized macros for these programs, for
-% example,
-% \begin{verbatim}
-% \bibitem[Ablamowicz and Fauser(2007)]%
-%         {Ablamowicz07}
-% \bibfield{author}{\bibinfo{person}{Rafal Ablamowicz} {and}
-%   \bibinfo{person}{Bertfried Fauser}.} \bibinfo{year}{2007}\natexlab{}.
-% \newblock \bibinfo{booktitle}{\emph{CLIFFORD: a Maple 11 Package for Clifford
-%   Algebra Computations, version 11}}.
-% \newblock
-% \urldef\tempurl%
-% \url{http://math.tntech.edu/rafal/cliff11/index.html}
-% \showURL{%
-% Retrieved February 28, 2008 from \tempurl} 
-% \end{verbatim}
-%
-% Manual bibliographies without these macros may slow down the
-% publication process, and thus are not recommended for ACM
-% submissions. 
 %
 %\subsection{Other notable packages and typographic remarks}
 %\label{sec:ug_other}
@@ -2479,6 +2479,7 @@
 % \changes{v1.93}{2023/10/22}{Added PACMSE journal option}
 % \changes{v2.01}{2024/01/06}{Documentation update: POMACS uses acmsmall}
 % \changes{v2.03}{2024/02/04}{Added documentation about samples}
+% \changes{v2.17}{2025/11/01}{Rearranged documentation}
 % 
 % And the driver code:
 %    \begin{macrocode}
