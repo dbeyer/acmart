@@ -1299,6 +1299,26 @@
 % Use the standard commands (\cs{title}, \cs{subtitle},
 % \cs{keywords}, |abstract|) for the main language of the paper.  
 %
+%
+%\subsection{Tagging}
+%\label{sec:ug-tagging}
+%
+% The \LaTeX\ tagging project,
+% \url{https://latex3.github.io/tagging-project/} is aimed to create
+% accessible and standards compliant PDFs.  To create a tagged PDF,
+% start your document with the \cs{DocumentMetadata} command, for
+% example,
+% \begin{verbatim}
+% \DocumentMetadata{
+%  lang        = en,
+%  pdfstandard = ua-2,
+%  pdfstandard = a-4f, 
+%  tagging=on,
+%  tagging-setup={math/setup=mathml-SE} 
+% }
+% \end{verbatim}
+% You must use \texttt{lualatex} to make the document fully tagged.  
+%
 %\subsection{Algorithms}
 %\label{sec:ug_algorithms}
 %
@@ -2480,6 +2500,7 @@
 % \changes{v2.01}{2024/01/06}{Documentation update: POMACS uses acmsmall}
 % \changes{v2.03}{2024/02/04}{Added documentation about samples}
 % \changes{v2.17}{2025/11/01}{Rearranged documentation}
+% \changes{v2.17}{2025/11/01}{Added tagging documentation}
 % 
 % And the driver code:
 %    \begin{macrocode}
