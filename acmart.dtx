@@ -2362,7 +2362,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2025/08/27 v2.16 Typesetting articles for the Association for Computing Machinery]
+[2025/11/01 v2.17 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -2515,6 +2515,22 @@
     I am loading acmart-preload-hook.tex. You are fully responsible
     for any problems from now on.}}{}
 %    \end{macrocode}
+%
+%
+%\subsection{Tagging and old package}
+%\label{sec:tagging}
+%
+% We want to use \cs{DocumentMetadata} command, but what with the old
+% kernels which some authors might use?  Here we just switch off the
+% tagging code if this is not defined
+% \begin{macro}{\IfDocumentMetadata}
+% \changes{v2.16}{2025/11/01}{Provided stubs for old kernels}
+%    \begin{macrocode}
+\providecommand{\IfDocumentMetadataTF}{\@secondoftwo}
+\providecommand{\IfDocumentMetadataT}{\@gobble}
+\providecommand{\IfDocumentMetadataF}{\@firstofone}
+%    \end{macrocode}
+% \end{macro}
 %
 % \subsection{Options}
 % \label{sec:options}
