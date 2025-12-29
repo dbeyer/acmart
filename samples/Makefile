@@ -60,8 +60,8 @@ sigconf-lualatex.pdf: ENGINE=lualatex
 acmsmall-tagged.pdf: ENGINE = lualatex-dev
 
 docclean:
-	${RM} $(PACKAGE).cls \
-	$(PACKAGE)-tagged.cls \
+	${RM} acmart.cls \
+	acmart-tagged.cls \
 	ACM-Reference-Format.bst \
 	*.log *.aux *.out \
 	*.bbl *.blg *.cut *.toc \
