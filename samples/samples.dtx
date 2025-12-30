@@ -39,20 +39,18 @@
 %%
 %%
 %<manuscript>\documentclass[manuscript,screen,review]{acmart}
-%<acmsmall&!tagged>\documentclass[acmsmall]{acmart}
-%<acmsmall-conf>\documentclass[acmsmall]{acmart}
-%<acmsmall-biblatex>\documentclass[acmsmall,natbib=false]{acmart}
-%<acmsmall-submission>\documentclass[acmsmall,screen,review]{acmart}
+%<acmsmall&!(tagged|submission|biblatex)>\documentclass[acmsmall]{acmart}
+%<acmsmall&submission>\documentclass[acmsmall,screen,anonymous,review]{acmart}
+%<acmsmall&biblatex>\documentclass[acmsmall,natbib=false]{acmart}
 %<acmlarge>\documentclass[acmlarge]{acmart}
-%<acmtog|acmtog-conf>\documentclass[acmtog]{acmart}
-%<sigconf>\documentclass[sigconf]{acmart}
-%<sigconf-biblatex>\documentclass[sigconf,natbib=false]{acmart}
-%<authordraft>\documentclass[sigconf,authordraft]{acmart}
+%<acmtog>\documentclass[acmtog]{acmart}
+%<sigconf&!(biblatex|authordraft|i13n)>\documentclass[sigconf]{acmart}
+%<sigconf&biblatex>\documentclass[sigconf,natbib=false]{acmart}
+%<sigconf&authordraft>\documentclass[sigconf,authordraft]{acmart}
 %<sigplan>\documentclass[sigplan,screen]{acmart}
 %<sigchi>\documentclass[sigchi]{acmart}
-%<sigchi-a>\documentclass[sigchi-a, nonacm]{acmart}
-%<sigconf-i13n>\documentclass[sigconf, language=french,
-%<sigconf-i13n>language=german, language=spanish, language=english]{acmart}
+%<sigconf&i13n>\documentclass[sigconf, language=french,
+%<sigconf&i13n>language=german, language=spanish, language=english]{acmart}
 %<acmcp>\documentclass[acmcp]{acmart}
 %<acmsmall&tagged>\documentclass[acmsmall]{acmart-tagged}
 %%
@@ -86,19 +84,18 @@
 \acmISBN{978-1-4503-XXXX-X/2018/06}
 %</proceedings>
 
-%<*journal>
-%%
+%<*!proceedings>
 %% These commands are for a JOURNAL article.
-%<acmsmall|acmsmall-submission|acmsmall-biblatex>\acmJournal{JACM}
+%<acmsmall>\acmJournal{JACM}
 %<acmlarge>\acmJournal{POMACS}
-%<acmtog>\acmJournal{TOG}
-%<acmtog-conf>%\acmJournal{TOG} % Comment out journal to get conference info in bibstrip.
+%<acmtog&!conf>\acmJournal{TOG}
+%<acmtog&conf>%\acmJournal{TOG} % Comment out journal to get conference info in bibstrip.
 %<acmcp>\acmJournal{JDS}
 \acmVolume{37}
 \acmNumber{4}
 \acmArticle{111}
 \acmMonth{8}
-%</journal>
+%</!proceedings>
 %<*all>
 
 
@@ -110,7 +107,7 @@
 %%\acmSubmissionID{123-A56-BU3}
 %</all>
 
-%<*!acmcp>
+%<*!acmcp&!biblatex>
 %%
 %% For managing citations, it is recommended to use bibliography
 %% files in BibTeX format.
@@ -123,9 +120,6 @@
 %% Look at the sample-*-biblatex.tex files for templates showcasing
 %% the biblatex styles.
 %%
-%</!acmcp>
-
-%<*bibtex>
 %%
 %% The majority of ACM publications use numbered citations and
 %% references.  The command \citestyle{authoryear} switches to the
@@ -134,13 +128,13 @@
 %% If you are preparing content for an event
 %% sponsored by ACM SIGGRAPH, you must use the "author year" style of
 %% citations and references.
-%<!(acmtog|acmtog-conf)>%% Uncommenting 
-%<!(acmtog|acmtog-conf)>%% the next command will enable that style.
-%<!(acmtog|acmtog-conf)>%%\citestyle{acmauthoryear}
-%<acmtog|acmtog-conf>\citestyle{acmauthoryear}
-%</bibtex>
+%<!acmtog>%% Uncommenting 
+%<!acmtog>%% the next command will enable that style.
+%<!acmtog>%%\citestyle{acmauthoryear}
+%<acmtog>\citestyle{acmauthoryear}
+%</!acmcp&!biblatex>
 
-%<*acmsmall-biblatex|sigconf-biblatex>
+%<*biblatex>
 %%
 %% The majority of ACM publications use numbered citations and
 %% references, obtained by selecting the acmnumeric BibLaTeX style.
@@ -153,14 +147,14 @@
 %% Bibliography style
 \RequirePackage[
   datamodel=acmdatamodel,
-%<!acmsmall-biblatex>  style=acmnumeric,
-%<acmsmall-biblatex>  style=acmauthoryear,
+%<!acmsmall&biblatex>  style=acmnumeric,
+%<acmsmall&biblatex>  style=acmauthoryear,
   ]{biblatex}
 
 %% Declare bibliography sources (one \addbibresource command per source)
 \addbibresource{software.bib}
 \addbibresource{sample-base.bib}
-%</acmsmall-biblatex|sigconf-biblatex>
+%</biblatex>
 %<*all>
 
 %%
@@ -171,9 +165,9 @@
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
 \title{The Name of the Title Is Hope}
-%<sigconf-i13n>\translatedtitle{french}{Le nom du titre est l'espoir}
-%<sigconf-i13n>\translatedtitle{german}{Der Name des Titels ist 'Hoffnung'}
-%<sigconf-i13n>\translatedtitle{spanish}{El nombre del título es esperanza}
+%<i13n>\translatedtitle{french}{Le nom du titre est l'espoir}
+%<i13n>\translatedtitle{german}{Der Name des Titels ist 'Hoffnung'}
+%<i13n>\translatedtitle{spanish}{El nombre del título es esperanza}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -255,7 +249,7 @@
 %</all>
 %<*acmcp>
 %%
-%% Article type: Research, Review, Discussion, Invited or position
+%% Article type: Research, Review, Discussion, Invited or Position
 \acmArticleType{Review}
 %%
 %% Links to code and data
@@ -291,7 +285,7 @@
   preparation of the documentation of their work.
 \end{abstract}
 %</!acmcp>
-%<*sigconf-i13n>
+%<*i13n>
 
 \begin{translatedabstract}{french}
   Un document \LaTeX\ clair et bien documenté est présenté comme un
@@ -321,7 +315,7 @@
   un autor puede usar en el preparación de la documentación de su
   trabajo.
  \end{translatedabstract}
-%</sigconf-i13n>
+%</i13n>
 %<*!acmcp>
 
 %%
@@ -365,15 +359,15 @@
 %% the work being presented. Separate the keywords with commas.
 \keywords{Do, Not, Use, This, Code, Put, the, Correct, Terms, for,
   Your, Paper} 
-%<sigconf-i13n>\translatedkeywords{french}{ensembles de données,
-%<sigconf-i13n> réseaux de neurones,
-%<sigconf-i13n>  détection du regard, marquage de texte}
-%<sigconf-i13n>  \translatedkeywords{german}{Datensammlungen,
-%<sigconf-i13n> neuronale Netze, Blickerkennung, Textklassifizierung}
-%<sigconf-i13n> \translatedkeywords{spanish}{conjuntos de datos,
-%<sigconf-i13n> redes neuronales, detección de mirada, etiquetado de texto} 
+%<i13n>\translatedkeywords{french}{ensembles de données,
+%<i13n> réseaux de neurones,
+%<i13n>  détection du regard, marquage de texte}
+%<i13n>  \translatedkeywords{german}{Datensammlungen,
+%<i13n> neuronale Netze, Blickerkennung, Textklassifizierung}
+%<i13n> \translatedkeywords{spanish}{conjuntos de datos,
+%<i13n> redes neuronales, detección de mirada, etiquetado de texto} 
 %</all>
-%<*sigconf|authordraft|sigplan|acmsmall-conf|sigconf-i13n>
+%<*sigconf|sigplan|conf>
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
@@ -384,7 +378,7 @@
   seats. Ichiro Suzuki preparing to bat.} 
   \label{fig:teaser}
 \end{teaserfigure}
-%</sigconf|authordraft|sigplan|acmsmall-conf|sigconf-i13n>
+%</sigconf|sigplan|conf>
 %<*!acmcp>
 
 \received{20 February 2007}
@@ -475,7 +469,7 @@ This document uses the following string as the first command in the
 source file:
 \begin{verbatim}
 %<manuscript>\documentclass[manuscript,screen,review]{acmart}
-%<acmsmall|acmsmall-conf>\documentclass[acmsmall]{acmart}
+%<acmsmall>\documentclass[acmsmall]{acmart}
 %<acmsmall-submission>\documentclass[acmsmall,screen,review]{acmart}
 %<acmlarge>\documentclass[acmlarge]{acmart}
 %<acmtog|acmtog-conf>\documentclass[acmtog]{acmart}
@@ -483,9 +477,8 @@ source file:
 %<authordraft>\documentclass[sigconf,authordraft]{acmart}
 %<sigplan>\documentclass[sigplan,screen]{acmart}
 %<sigchi>\documentclass[sigchi]{acmart}
-%<sigchi-a>\documentclass[sigchi-a]{acmart}
-%<sigconf-i13n>\documentclass[sigconf, language=french,
-%<sigconf-i13n>language=german, language=spanish, language=english]{acmart}
+%<sigconf&i13n>\documentclass[sigconf, language=french,
+%<sigconf&i13n>language=german, language=spanish, language=english]{acmart}
 \end{verbatim}
 
 
@@ -661,8 +654,7 @@ Table~\ref{tab:freq} is included in the input file; compare the
 placement of the table here with the table in the printed output of
 this document.
 
-%<!sigchi-a>\begin{table}
-%<sigchi-a>\begin{margintable}
+\begin{table}
   \caption{Frequency of Special Characters}
   \label{tab:freq}
   \begin{tabular}{ccl}
@@ -675,8 +667,8 @@ this document.
     $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
   \bottomrule
 \end{tabular}
-%<!sigchi-a>\end{table}
-%<sigchi-a>\end{margintable}
+\end{table}
+
 
 To set a wider table, which takes up the whole width of the page's
 live area, use the environment \textbf{table*} to enclose the table's
@@ -758,16 +750,14 @@ The ``\verb|figure|'' environment should be used for figures. One or
 more images can be placed within a figure. If your figure contains
 third-party material, you must clearly identify it as such, as shown
 in the example below.
-%<!sigchi-a>\begin{figure}[h]
-%<sigchi-a>\begin{marginfigure}
+\begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{sample-franklin}
   \caption{1907 Franklin Model D roadster. Photograph by Harris \&
     Ewing, Inc. [Public domain], via Wikimedia
     Commons. (\url{https://goo.gl/VLCRBB}).}
   \Description{A woman and a girl in white dresses sit in an open car.}
-%<!sigchi-a>\end{figure}
-%<sigchi-a>\end{marginfigure}
+\end{figure}
 
 Your figures should contain a caption which describes the figure to
 the reader.
@@ -818,7 +808,7 @@ references is strongly recommended. Authors' names should be complete
 reference should be included: title, year, volume, number, pages,
 article DOI, etc.
 
-%<*!(acmsmall-biblatex|sigconf-biblatex)>
+%<*!biblatex>
 The bibliography is included in your source document with these two
 commands, placed just before the \verb|\end{document}| command:
 \begin{verbatim}
@@ -836,9 +826,9 @@ command in the {\bfseries preamble} (before the command
 \begin{verbatim}
   \citestyle{acmauthoryear}
 \end{verbatim}
-%</!(acmsmall-biblatex|sigconf-biblatex)>
+%</!biblatex>
 
-%<*acmsmall-biblatex|sigconf-biblatex>
+%<*biblatex>
 Using the BibLaTeX system, the bibliography is included in your source
 document with the following command, placed just before the \verb|\end{document}| command:
 \begin{verbatim}
@@ -858,7 +848,7 @@ ACM publications have citations and references formatted in the
 to the \verb|biblatex| package loaded in the {\bfseries preamble} (before the command
 ``\verb|\begin{document}|'') of your \LaTeX\ source.
 
-%</acmsmall-biblatex|sigconf-biblatex>
+%</biblatex>
 
 
 
@@ -893,13 +883,13 @@ to the \verb|biblatex| package loaded in the {\bfseries preamble} (before the co
   couple of citations with DOIs:
   \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
   citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-%<*!(acmsmall-biblatex|sigconf-biblatex)>
+%<*!biblatex>
   Artifacts: \cite{R} and \cite{UMassCitations}.
-%</!(acmsmall-biblatex|sigconf-biblatex)>
-%<*acmsmall-biblatex|sigconf-biblatex>
+%</!biblatex>
+%<*biblatex>
   Data Artifacts: \cite{UMassCitations}.  
   Software project:~\cite{cgal,delebecque:hal-02090402}. Software Version:~\cite{gf-tag-sound-repo,}. Software Module:~\cite{cgal:lp-gi-20a}. Code fragment:~\cite{simplemapper}.
-%</acmsmall-biblatex|sigconf-biblatex>
+%</biblatex>
 
   
 \section{Acknowledgments}
@@ -960,19 +950,6 @@ environment have a mandatory first argument: the language of the
 second argument.  See \verb|sample-sigconf-i13n.tex| file for examples
 of their usage.
 
-\section{SIGCHI Extended Abstracts}
-
-The ``\verb|sigchi-a|'' template style (available only in \LaTeX\ and
-not in Word) produces a landscape-orientation formatted article, with
-a wide left margin. Three environments are available for use with the
-``\verb|sigchi-a|'' template style, and produce formatted output in
-the margin:
-\begin{description}
-\item[\texttt{sidebar}:]  Place formatted text in the margin.
-\item[\texttt{marginfigure}:] Place a figure in the margin.
-\item[\texttt{margintable}:] Place a table in the margin.
-\end{description}
-
 %%
 %% The acknowledgments section is defined using the "acks" environment
 %% (and NOT an unnumbered section). This ensures the proper
@@ -982,20 +959,20 @@ the margin:
 To Robert, for the bagels and explaining CMYK and color spaces.
 \end{acks}
 
-%<*!(acmsmall-biblatex|sigconf-biblatex)>
+%<*!biblatex>
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{sample-base}
-%</!(acmsmall-biblatex|sigconf-biblatex)>
+%</!biblatex>
 
-%<*(acmsmall-biblatex|sigconf-biblatex)>
+%<*biblatex>
 %%
 %% Print the bibliography
 %%
 \printbibliography
-%</(acmsmall-biblatex|sigconf-biblatex)>
+%</biblatex>
 
 %% 
 %% If your work has an appendix, this is the place to put it.
