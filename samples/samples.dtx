@@ -469,16 +469,20 @@ This document uses the following string as the first command in the
 source file:
 \begin{verbatim}
 %<manuscript>\documentclass[manuscript,screen,review]{acmart}
-%<acmsmall>\documentclass[acmsmall]{acmart}
-%<acmsmall-submission>\documentclass[acmsmall,screen,review]{acmart}
+%<acmsmall&!(tagged|submission|biblatex)>\documentclass[acmsmall]{acmart}
+%<acmsmall&submission>\documentclass[acmsmall,screen,anonymous,review]{acmart}
+%<acmsmall&biblatex>\documentclass[acmsmall,natbib=false]{acmart}
 %<acmlarge>\documentclass[acmlarge]{acmart}
-%<acmtog|acmtog-conf>\documentclass[acmtog]{acmart}
-%<sigconf>\documentclass[sigconf]{acmart}
-%<authordraft>\documentclass[sigconf,authordraft]{acmart}
+%<acmtog>\documentclass[acmtog]{acmart}
+%<sigconf&!(biblatex|authordraft|i13n)>\documentclass[sigconf]{acmart}
+%<sigconf&biblatex>\documentclass[sigconf,natbib=false]{acmart}
+%<sigconf&authordraft>\documentclass[sigconf,authordraft]{acmart}
 %<sigplan>\documentclass[sigplan,screen]{acmart}
 %<sigchi>\documentclass[sigchi]{acmart}
 %<sigconf&i13n>\documentclass[sigconf, language=french,
 %<sigconf&i13n>language=german, language=spanish, language=english]{acmart}
+%<acmcp>\documentclass[acmcp]{acmart}
+%<acmsmall&tagged>\documentclass[acmsmall]{acmart-tagged}
 \end{verbatim}
 
 
