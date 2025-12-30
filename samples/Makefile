@@ -61,7 +61,6 @@ acmsmall-tagged.pdf: ENGINE = lualatex-dev
 
 docclean:
 	${RM} acmart.cls \
-	acmart-tagged.cls \
 	ACM-Reference-Format.bst \
 	*.log *.aux *.out \
 	*.bbl *.blg *.cut *.toc \
