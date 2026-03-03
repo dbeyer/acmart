@@ -2380,9 +2380,8 @@
 %<*gobble>
 \ProvidesFile{acmart.dtx}
 %</gobble>
-%<class&!tagged>\ProvidesClass{acmart}
-%<tagged>\ProvidesClass{acmart-tagged}
-[2025/11/01 v2.17 Typesetting articles for the Association for Computing Machinery]
+%<class>\ProvidesClass{acmart}
+[2026/03/02 v2.18 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -2521,8 +2520,7 @@
 \end{document}
 %</gobble>
 %<*class>
-%<!tagged>\def\@classname{acmart}
-%<tagged>\def\@classname{acmart-tagged}
+\def\@classname{acmart}
 %    \end{macrocode}
 %
 %
@@ -4083,7 +4081,9 @@
 %
 % The global warning
 % \changes{v2.13}{2025/01/11}{New warnings about lack of descriptions}
+% \changes{v2.18}{2026/03/03}{Switched off warning in tagged mode}
 %    \begin{macrocode}
+\IfDocumentMetadataF{%
 \AtEndDocument{\if@undescribed@images
   \ClassWarningNoLine{\@classname}{Some images may lack
     descriptions.\MessageBreak
@@ -4101,7 +4101,8 @@
   is also important to optimize color contrast for the visually
   impaired. Taking these important steps when creating your papers
   will ensure that the widest possible audience can ingest your
-  work.}\fi} 
+  work.}\fi}
+}
 %    \end{macrocode}
 %
 % Hooks for figures and tables.  We also patch |algorithm| and
@@ -4158,7 +4159,8 @@
 %
 % \changes{v1.55}{2018/10/20}{Table captions for SIGCHI now use the
 % same font size as figure captions (Luis Leiva)}
-% We use the |caption| package
+% \changes{v2.18}{2026/03/02}{Rewrote caption code for tagging}
+% We use |caption| package
 %    \begin{macrocode}
 \RequirePackage{caption, float}
 \captionsetup[table]{position=top}
@@ -4195,6 +4197,18 @@
   \fi
 \fi
 %    \end{macrocode}
+%
+% \changes{v2.18}{2026/03/03}{Disabled temporarily tagging of captions}
+% Unfortinately |caption| package so far is not tagging compatible.
+% So we need to recreate it if tagging is enabled.
+%    \begin{macrocode}
+\IfDocumentMetadataT{%
+  \let\@makecaption@caption\@makecaption
+  \AtBeginDocument{\let\@makecaption\@makecaption@caption}
+}
+%    \end{macrocode}
+%
+% 
 %
 % \begin{macro}{sidebar}
 %   The |sidebar| environment:
@@ -7729,17 +7743,6 @@
 % 
 % \end{macro}
 %
-%<*tagged>
-% We stop tagging inside maketitle for now.  Ulrike's code again.
-%    \begin{macrocode}
-\ExplSyntaxOn
-\AddToHook{cmd/maketitle/before}
- {\tagstructbegin{tag=Title}\tagmcbegin{} \tag_stop:}
-\AddToHook{cmd/maketitle/after}
- {\tag_start:\tagmcend\tagstructend }
-\ExplSyntaxOff
-%    \end{macrocode}
-%</tagged>
 %
 %\subsection{Headers and Footers}
 %\label{sec:head_foot}
