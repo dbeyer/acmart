@@ -21,7 +21,10 @@
 \ifx\HCode\Undef
 \DocumentMetadata{
  pdfversion=2.0,pdfstandard=ua-2,
- testphase=laltest
+ testphase=latest,
+ tagging=on,
+ tagging-setup={math/setup=mathml-SE},
+ lang = en
  }
 \else
 \DocumentMetadata{}
@@ -393,7 +396,7 @@
 %<*tagged>
 % Normally papers do not have table of contents.  Here we insert it to
 % test tagging code...
-\tableofcontents
+%\tableofcontents
 %</tagged>
 
 \section{Introduction}
