@@ -21,7 +21,8 @@
 \ifx\HCode\Undef
 \DocumentMetadata{
  pdfversion=2.0,pdfstandard=ua-2,
- testphase={phase-III,firstaid,math,title}}
+ testphase=laltest
+ }
 \else
 \DocumentMetadata{}
 \fi
@@ -39,7 +40,7 @@
 %%
 %%
 %<manuscript>\documentclass[manuscript,screen,review]{acmart}
-%<acmsmall&!(tagged|submission|biblatex)>\documentclass[acmsmall]{acmart}
+%<acmsmall&!(submission|biblatex)>\documentclass[acmsmall]{acmart}
 %<acmsmall&submission>\documentclass[acmsmall,screen,anonymous,review]{acmart}
 %<acmsmall&biblatex>\documentclass[acmsmall,natbib=false]{acmart}
 %<acmlarge>\documentclass[acmlarge]{acmart}
@@ -52,7 +53,6 @@
 %<sigconf&i13n>\documentclass[sigconf, language=french,
 %<sigconf&i13n>language=german, language=spanish, language=english]{acmart}
 %<acmcp>\documentclass[acmcp]{acmart}
-%<acmsmall&tagged>\documentclass[acmsmall]{acmart-tagged}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -389,6 +389,12 @@
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.
 \maketitle
+
+%<*tagged>
+% Normally papers do not have table of contents.  Here we insert it to
+% test tagging code...
+\tableofcontents
+%</tagged>
 
 \section{Introduction}
 ACM's consolidated article template, introduced in 2017, provides a

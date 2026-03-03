@@ -38,6 +38,10 @@ acmguide.pdf: $(PACKAGE).dtx $(PACKAGE).cls
 	pdflatex $<
 
 
+tagged:
+	${MAKE} acmart.cls && cd samples && ${MAKE} acmsmall-tagged.pdf
+
+
 
 
 .PRECIOUS:  $(PACKAGE).cfg $(PACKAGE).cls $(PACKAGE)-tagged.cls
