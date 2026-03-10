@@ -39,7 +39,7 @@ acmguide.pdf: $(PACKAGE).dtx $(PACKAGE).cls
 
 
 tagged:
-	${MAKE} acmart.cls && cd samples && ${MAKE} acmsmall-tagged.pdf
+	${MAKE} acmart.cls && cd samples && ${MAKE} acmsmall-tagged.pdf && ${MAKE} sigconf-tagged.pdf
 
 
 

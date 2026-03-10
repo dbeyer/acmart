@@ -1413,12 +1413,16 @@
 %\subsection{Descriptions of images}
 %\label{sec:descriptions}
 %
-% \DescribeMacro{\Description}%
 % Some readers of ACM publications might be visually challenged.
 % These readers might use a voice-over software to read aloud the
 % papers.  It is important to provide them a description of each
 % image used in the paper.
 %
+% There are two ways to include descriptions in thd figures.
+%
+% \DescribeMacro{\Description}%
+% The old way, that predates \LaTeX\ tagging project is based on the
+% \cs{Description} command.
 % The command \cs{Description}\oarg{short description}\marg{long
 % description} should be placed inside every \texttt{figure},
 % \texttt{teaserfigure} or \texttt{marginfigure} environment to
@@ -1431,6 +1435,20 @@
 %   \includegraphics{voltage}
 %   \Description{A bell-like histogram centered at $0.5$~V with most
 %   measurements between $0.2$~V and $0.8$~V}
+%   \caption{Histogram of the measurements of voltage}
+%   \label{fig:voltage}
+% \end{figure}
+% \end{verbatim}
+%
+% The new way, which is switched on by the \cs{DocumentMetada} command
+% is based on the |alt| keyword for the \cs{includegraphics} command,
+% for example,
+% \begin{verbatim}
+% \begin{figure}
+%   \centering
+%   \includegraphics[alt={A bell-like histogram
+%   centered at $0.5$~V with most
+%   measurements between $0.2$~V and $0.8$~V}]{voltage}
 %   \caption{Histogram of the measurements of voltage}
 %   \label{fig:voltage}
 % \end{figure}
@@ -4200,12 +4218,33 @@
 %
 % \changes{v2.18}{2026/03/03}{Disabled temporarily tagging of captions}
 % Unfortinately |caption| package so far is not tagging compatible.
-% So we need to recreate it if tagging is enabled.
+% So we need to recreate it if tagging is enabled.  This is from
+% https://github.com/latex3/tagging-project/issues/720
 %    \begin{macrocode}
+\ExplSyntaxOn
 \IfDocumentMetadataT{%
-  \let\@makecaption@caption\@makecaption
-  \AtBeginDocument{\let\@makecaption\@makecaption@caption}
+  \RemoveFromHook{begindocument}[latex-lab-testphase-float]
+  \socket_new_plug:nnn{tagsupport/parbox/before}{caption}
+  {   
+    \tagpdfparaOn %restart para tagging
+    \tl_if_empty:NTF\@current@float@struct
+    {     
+      \tag_struct_begin:n{tag=Caption,firstkid}
+    }
+    {
+      \tag_struct_begin:n{tag=Caption,parent=\@current@float@struct,firstkid}
+    } 
+  }
+  \socket_new_plug:nnn{tagsupport/parbox/after}{caption}
+  {
+    \tag_struct_end:   
+  }
+  \l@addto@macro\caption@beginex@hook{%
+    \tagpdfparaOff %leavevmode in parbox should not start paragraph structure
+    \AssignSocketPlug{tagsupport/parbox/before}{caption}
+    \AssignSocketPlug{tagsupport/parbox/after}{caption}}
 }
+\ExplSyntaxOff
 %    \end{macrocode}
 %
 % 

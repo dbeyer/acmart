@@ -375,10 +375,13 @@
 %% information and the body of the document, and typically spans the
 %% page.
 \begin{teaserfigure}
-  \includegraphics[width=\textwidth]{sampleteaser}
+%<!tagged> \includegraphics[width=\textwidth]{sampleteaser}
+%<tagged> \includegraphics[width=\textwidth,
+%<tagged> alt={Enjoying the baseball game from the third-base
+%<tagged>  seats. Ichiro Suzuki preparing to bat.}]{sampleteaser}
   \caption{Seattle Mariners at Spring Training, 2010.}
-  \Description{Enjoying the baseball game from the third-base
-  seats. Ichiro Suzuki preparing to bat.} 
+%<!tagged>  \Description{Enjoying the baseball game from the third-base
+%<!tagged>  seats. Ichiro Suzuki preparing to bat.} 
   \label{fig:teaser}
 \end{teaserfigure}
 %</sigconf|sigplan|conf>
@@ -765,11 +768,14 @@ third-party material, you must clearly identify it as such, as shown
 in the example below.
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{sample-franklin}
+%<!tagged> \includegraphics[width=\linewidth]{sample-franklin}
+%<tagged> \includegraphics[width=\linewidth,
+%<tagged> alt={A woman and a girl in white dresses sit in
+%<tagged> an open car.}]{sample-franklin}
   \caption{1907 Franklin Model D roadster. Photograph by Harris \&
     Ewing, Inc. [Public domain], via Wikimedia
     Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
+%<!tagged>  \Description{A woman and a girl in white dresses sit in an open car.}
 \end{figure}
 
 Your figures should contain a caption which describes the figure to
@@ -806,9 +812,11 @@ figure in your article, place the command immediately before the
 \verb|\maketitle| command:
 \begin{verbatim}
   \begin{teaserfigure}
-    \includegraphics[width=\textwidth]{sampleteaser}
+%<!tagged> \includegraphics[width=\textwidth]{sampleteaser}
+%<tagged> \includegraphics[width=\textwidth,
+%<tagged> alt={figure description}]{sampleteaser}
     \caption{figure caption}
-    \Description{figure description}
+%<!tagged>    \Description{figure description}
   \end{teaserfigure}
 \end{verbatim}
 
