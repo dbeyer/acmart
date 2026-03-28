@@ -12,6 +12,9 @@ The production version is the one on CTAN and ACM sites.
 
 Changes
 
+Version 2.17   2026-03-28
+	       Bugs fixed
+
 Version 2.16   2025-08-27
 	       Emergency release: fixes a typo in the code.
 

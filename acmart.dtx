@@ -2398,8 +2398,14 @@
 %<*gobble>
 \ProvidesFile{acmart.dtx}
 %</gobble>
+<<<<<<< HEAD
 %<class>\ProvidesClass{acmart}
 [2026/03/02 v2.18 Typesetting articles for the Association for Computing Machinery]
+=======
+%<class&!tagged>\ProvidesClass{acmart}
+%<tagged>\ProvidesClass{acmart-tagged}
+[2026/03/28 v2.17 Typesetting articles for the Association for Computing Machinery]
+>>>>>>> primary
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -4521,7 +4527,9 @@
 % \changes{2.06}{2024/04/13}{Added eISSN for a number of journals}
 % \changes{2.07}{2024/04/17}{Another change for TELO}
 % \changes{2.15}{2025/08/21}{Added AILET, TAIS, TAISAP, ACMJDS}
-% \changes{2.16}{2025/08/27}{Corrected handling of journals in the options}
+% \changes{2.16}{2025/08/27}{Corrected handling of journals in the
+% options}
+% \changes{2.17}{2026/03/28}{Fixed bug with ACMJDS}
 %
 % We use the |xkeyval| interface to define journal titles and the relevant
 % information
@@ -4611,11 +4619,11 @@
   \def\@journalNameShort{ACM J. Comput. Sustain. Soc.}%
   \def\@permissionCodeOne{2834-5533}%
   \def\@permissionCodeTwo{2834-5533}%
-\or % ACMJCDS
+\or % ACMJDS
   \def\@journalName{ACM Journal of Data Science}%
   \def\@journalNameShort{ACM J. Data Sci.}%
-  \def\@permissionCodeOne{0000-0000}%
-  \def\@permissionCodeTwo{0000-0000}%
+  \def\@permissionCodeOne{3069-3497}%
+  \def\@permissionCodeTwo{3069-3497}%
 \or % AILET
   \def\@journalName{ACM AI Letters}%
   \def\@journalNameShort{ACM AI Lett.}%
