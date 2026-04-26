@@ -3160,8 +3160,8 @@ FUNCTION { begin.bib }
   "%%% NOTE TO THE USER: you can override these defaults by providing"       writeln
   "%%% customized versions of any of these macros before the \bibliography"  writeln
   "%%% command.  Each of them MUST provide its own final punctuation,"       writeln
-  "%%% except for \shownote{} and \showURL{}.  The latter two"  writeln
-  "%%% do not use final punctuation, in order to avoid confusing it with"    writeln
+  "%%% except for \shownote{} and \showURL{}.  The latter does"              writeln
+  "%%% not use final punctuation, in order to avoid confusing it with"       writeln
   "%%% the Web address."                                                     writeln
   "%%%"                                                                      writeln
   "%%% To suppress output of a particular field, define its macro to expand" writeln
