@@ -369,7 +369,7 @@
 % confusing different revisions.  The footer also includes the page range of
 % the document.  This helps detect missing pages in hard copies.
 %
-% The option |authordraft| is intended for author's drafts that are not
+% The option |authordraft| is intended for authors' drafts that are not
 % intended for distribution.  It typesets a copyright block to give the
 % author an idea of its size and the overall size of the paper but
 % overprints it with the phrase ``Unpublished working draft. Not for
@@ -560,8 +560,8 @@
 % \email{...}
 % \end{verbatim}
 % Do \emph{not} use the \LaTeX\ \cs{and} macro or commas, or \verb|\\|
-% between the authors! Each author deserves his or
-% her own \cs{author} command.  An attempt to list several authors or
+% between the authors! Each author deserves their
+% own \cs{author} command.  An attempt to list several authors or
 % their e-mails in one command leads to a warning or an error.  This
 % is not a bug, but the expected behavior.
 %
@@ -878,11 +878,11 @@
 % article in a journal or book.  It is used by the typesetter.
 %
 %
-% \DescribeMacro{\terms}%
 % \DescribeMacro{\keywords}%
 % The command
 % \cs{keywords}\marg{keyword, keyword,\ldots} sets keywords for the
-% article.  They must be
+% article.  Note that ACM now considers keywords obsolete and phases
+% them out.  If present, keywords must be 
 % separated by commas, for example,
 % \begin{verbatim}
 % \keywords{wireless sensor networks, media access control,
@@ -949,8 +949,6 @@
 % \verb|\setcopyright{acmcopyright}|.  The possible values for this
 % command are listed in Table~\ref{tab:setcopyright}.  This command
 % must be placed in the preamble, before |\begin{document}|.
-% Additional information about ACM copyright rules is discussed in
-% Section~\ref{sec:ug_cc}.
 %
 % \begin{table}
 %   \centering
@@ -1257,7 +1255,8 @@
 %
 % This key can use any language defined in \textsl{babel}
 % package~\cite{Braams22:Babel} (currently the package is tested with
-% English, French, German and Spanish languages; other languages may
+% English, French, German and Spanish languages.  If \cs{keywords} are
+% used, then other languages may
 % require a translation of \cs{keywordsname} macro).  Actually
 % \textsl{acmart} loads \textsl{babel} internally, so you can use  the
 % facilities provided by this package.
@@ -1269,9 +1268,10 @@
 % \DescribeMacro{\translatedtitle}%
 % \DescribeMacro{\translatedsubtitle}%
 % \DescribeMacro{\translatedkeywords}%
-% The commands \cs{translatedtitle}\marg{language}{title},
-% \cs{translatedsubtitle}\marg{language}{subtitle} and
-% \cs{translatedkeywords}{language}{keywords} are used to set title,
+% The commands \cs{translatedtitle},
+% \cs{translatedsubtitle}, and (if keywords are used)
+% \cs{translatedkeywords} have two mandatory arguments each:
+% \marg{language} and \marg{keywords}.  They  are used to set title,
 % subtitle and keywords in the secondary language.  For example, a
 % paper in English with French title and abstract may set 
 % \begin{verbatim}
@@ -1303,6 +1303,10 @@
 %\subsection{Tagging}
 %\label{sec:ug-tagging}
 %
+%
+% ACM is firmly committed to produce fully tagged PDFs compliant with
+% the accessibility standards.
+% 
 % The \LaTeX\ tagging project,
 % \url{https://latex3.github.io/tagging-project/} is aimed to create
 % accessible and standards compliant PDFs.  To create a tagged PDF,
@@ -1317,7 +1321,13 @@
 %  tagging-setup={math/setup=mathml-SE} 
 % }
 % \end{verbatim}
-% You must use \texttt{lualatex} to make the document fully tagged.  
+% You must use \texttt{lualatex} to make the document fully tagged.
+%
+% At present this code is still experimental.  If you use it, please
+% \emph{do not ask ACM for support}.  On the other hand, bug reports
+% at \url{https://github.com/borisveytsman/acmart/issues} will be
+% appreciated.
+%
 %
 %\subsection{Algorithms}
 %\label{sec:ug_algorithms}
@@ -2287,32 +2297,34 @@
 %
 % Here is the list of the samples:
 % \begin{description}
-% \item[sample-manuscript:] A proceedings paper in the manuscript format.
-% \item[sample-acmsmall:] A journal paper in the |acmsmall| format.
-% \item[sample-acmsmall-biblatex:] A journal paper using experimental
+% \item[manuscript:] A proceedings paper in the manuscript format.
+% \item[acmsmall:] A journal paper in the |acmsmall| format.
+% \item[acmsmall-biblatex:] A journal paper using experimental
 % \textsl{biblatex} bibliography processing.
-% \item[sample-acmlarge:] A journal paper in the |acmlarge| format.
-% \item[sample-acmtog:] A journal paper in the |acmtog| format.
-% \item[sample-sigconf:] A proceedings paper in the standard |sigconf|
+% \item[acmlarge:] A journal paper in the |acmlarge| format.
+% \item[acmtog:] A journal paper in the |acmtog| format.
+% \item[sigconf:] A proceedings paper in the standard |sigconf|
 % format.
-% \item[sample-sigconf-biblatex:] A proceedings paper in the |sigconf|
+% \item[sigconf-biblatex:] A proceedings paper in the |sigconf|
 % format using experimental \textsl{biblatex} bibliography
 % processing.
-% \item[sample-sigconf-authordraft:] A proceedings paper in the
+% \item[sigconf-authordraft:] A proceedings paper in the
 % |sigconf| format with the |authordraft| option selected.
-% \item[sample-sigconf-i13n:] A proceedings paper in the
+% \item[sigconf-i13n:] A proceedings paper in the
 % |sigconf| format with multilanguage titles and abstract.
-% \item[sample-sigconf-xelatex:] A proceedings paper in the
-% |sigconf| format, Xe\LaTeX\ version.
-% \item[sample-sigconf-lualatex:] A proceedings paper in the
+% \item[sigconf-lualatex:] A proceedings paper in the
 % |sigconf| format, Lua\LaTeX\ version.
-% \item[sample-sigplan:] A proceedings paper in the |sigplan| format.
-% \item[sample-acmsmall-conf:] A proceedings paper in the |acmsmall|
+% \item[sigplan:] A proceedings paper in the |sigplan| format.
+% \item[acmsmall-conf:] A proceedings paper in the |acmsmall|
 % format for the publication in a journal using this option.
-% \item[sample-acmtog-conf:] A proceedings paper in the |acmtog|
+% \item[acmtog-conf:] A proceedings paper in the |acmtog|
 % format for the publication in a journal using this option.
-% \item[sample-acmcp:] A sample of ACM Cover Page used by JDS.
-% \item[sample-acmengage:] A sample of ACM Engage publication.
+% \item[acmcp:] A sample of ACM Cover Page used by JDS.
+% \item[acmengage:] A sample of ACM Engage publication.
+% \item[acmsmall-tagged:] A journal paper in the |acmsmall| format
+% with the tagging code, see Section~\ref{sec:ug-tagging}.
+% \item[sigconf-tagged:] A proceedings paper in the standard |sigconf|
+% format with the tagging code, see Section~\ref{sec:ug-tagging}.
 % \end{description}
 %
 %
@@ -2356,24 +2368,6 @@
 % \item |figure*|: \cs{fulltextwidth}.
 % \end{enumerate}
 %
-%\subsection{Experiments with tagging}
-%\label{sec:ug_tagged}
-%
-% ACM is firmly committed to produce fully tagged PDFs compliant with
-% the accessibility standards.  We use the developmental version of
-% tagging code by \LaTeX3 team, see the details at
-% \url{https://www.latex-project.org/publications/indexbytopic/pdf/}
-% and \url{https://tug.org/twg/accessibility/overview.html}.
-%
-% At present this work is highly experimental.  You may try the
-% experiments by (1)~using the class |acmart-tagged| in the document
-% class line, and (2)~adding the command
-% \cs{DocumentMetadata}\oarg{options} in the preamble, see the file
-% \path{sample-acmsmall-tagged.tex}.  If you do this, please \emph{do
-% not ask ACM for support}.  On the other hand, bug reports at
-% \url{https://github.com/borisveytsman/acmart/issues} will be
-% appreciated.  
-% 
 %
 %
 % \StopEventually{
@@ -2400,7 +2394,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2026/03/28 v2.17 Typesetting articles for the Association for Computing Machinery]
+[2026/05/23 v3.00 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -2519,6 +2513,10 @@
 % \changes{v2.03}{2024/02/04}{Added documentation about samples}
 % \changes{v2.17}{2025/11/01}{Rearranged documentation}
 % \changes{v2.17}{2025/11/01}{Added tagging documentation}
+% \changes{v3.00}{2026/05/23}{Merged tagged branch}
+% \changes{v3.00}{2026/05/23}{Keywords are now deprecated.  Deleted
+% them from the samples}
+% \changes{v3.00}{2026/05/23}{Revised documentation}
 % 
 % And the driver code:
 %    \begin{macrocode}
