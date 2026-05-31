@@ -240,6 +240,7 @@
 % \item \textsl{natbib}, \url{https://ctan.org/pkg/natbib},
 % \item \textsl{newtxmath}, \url{https://ctan.org/pkg/newtxmath},
 % \item \textsl{pbalance}, \url{https://ctan.org/pkg/pbalance},
+% \item \textsl{pifont}, \url{https://ctan.org/pkg/pifont},
 % \item \textsl{refcount}, \url{https://ctan.org/pkg/refcount},
 % \item \textsl{setspace}, \url{https://ctan.org/pkg/setspace},
 % \item \textsl{totpages}, \url{https://ctan.org/pkg/totpages},
@@ -730,7 +731,11 @@
 %   \country{San Serriffe}}
 % \end{verbatim}
 %
-%
+%  \DescribeMacro{\correspondingauthor}%
+% The command \cs{correspondingauthor} after an author's name marks
+% the corresponding author.  Note that there could be more than one
+% corresponding author.  Make sure that you have the email of the
+% author entered.
 %
 % \DescribeMacro{\thanks}%
 % Like |amsart| (and unlike standard \LaTeX{}), we allow
@@ -794,7 +799,7 @@
 % \authornotemark[1]
 % \end{verbatim}
 % The correct numbering of these marks is the responsibility of the
-% user.
+% user.  
 %
 % \DescribeMacro{\acmVolume}%
 % \DescribeMacro{\acmNumber}%
@@ -4065,7 +4070,10 @@
 \fi
 %    \end{macrocode}
 %
-%
+% \changes{v3.00}{2026/05/31}{Added pifont}
+%    \begin{macrocode}
+\RequirePackage{pifont}
+%    \end{macrocode}
 %
 %\subsection{Image descriptions}
 %\label{sec:description}
@@ -5398,6 +5406,26 @@
   \fi}
 %    \end{macrocode}
 %
+% \end{macro}
+%
+% \begin{macro}{\correspondingauthor}
+% \changes{v3.00}{2026/05/31}{Added macro}
+% Mark the author as corresponding author
+%    \begin{macrocode}
+\newcommand\correspondingauthor{%
+  \if@ACM@anonymous\else
+  \g@addto@macro\addresses{\@correspondingauthormark}%
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@correspondingauthormark}
+% \changes{v3.00}{2026/05/31}{Added macro}
+% Print the envelope
+%    \begin{macrocode}
+\def\@correspondingauthormark{\g@addto@macro\@currentauthors{%
+    \advance\hfuzz by 5pt\relax\textsuperscript{\ding{41}}\relax}}
+%    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\authornotemark}
@@ -7398,6 +7426,7 @@
 % \changes{v1.36}{2017/05/12}{Added authorsperrow overrride}
 % \changes{v1.73}{2020/09/07}{Check the presence of required elements
 % for affiliations}
+% \changes{v3.00}{2026/05/29}{Email is now clickable}
 % \changes{v1.78}{2021/05/16}{Unboxing \cs{mktitle@bx}}
 %   The |sigconf| version.  Here we use a centered design with each
 %   author in a separate box.
@@ -7442,10 +7471,10 @@
   \gdef\and{}}%
   \def\email##1##2{\ifx\@currentaffiliation\@empty
     \gdef\@currentaffiliation{\bgroup
-      \mathchardef\UrlBreakPenalty=10000\nolinkurl{##2}\egroup}%
+      \mathchardef\UrlBreakPenalty=10000\href{mailto:##2}{##2}\egroup}%
   \else
     \g@addto@macro\@currentaffiliation{\par\bgroup
-      \mathchardef\UrlBreakPenalty=10000\nolinkurl{##2}\egroup}%
+      \mathchardef\UrlBreakPenalty=10000\href{mailto:##2}{##2}\egroup}%
   \fi}%
   \def\affiliation##1##2{\ifx\@currentaffiliation\@empty
     \gdef\@currentaffiliation{%
@@ -7478,6 +7507,7 @@
 % \changes{v1.36}{2017/05/12}{Added authorsperrow overrride}
 % \changes{v1.73}{2020/09/07}{Check the presence of required elements
 % for affiliations}
+% \changes{v3.00}{2026/05/29}{Email is now clickable}
 %   The |sigchi-a| version.  We put authors in the main text with
 %   no more than 2 authors per line, unless overriden.
 %    \begin{macrocode}
@@ -7514,9 +7544,9 @@
   \fi
   \gdef\and{}}%
   \def\email##1##2{\ifx\@currentaffiliation\@empty
-    \gdef\@currentaffiliation{\nolinkurl{##2}}%
+    \gdef\@currentaffiliation{\href{mailto:##2}{##2}}%
   \else
-    \g@addto@macro\@currentaffiliation{\par\nolinkurl{##2}}%
+    \g@addto@macro\@currentaffiliation{\par\href{mailto:##2}{##2}}%
   \fi}%
   \def\affiliation##1##2{\ifx\@currentaffiliation\@empty
     \gdef\@currentaffiliation{%
@@ -7548,6 +7578,7 @@
 % \changes{v1.77}{2021/04/16}{New separator of institutions}
 % \changes{v2.06}{2024/04/13}{\cs{streetaddress} and \cs{postcode} now
 % produce warnings}
+% \changes{v3.00}{2026/05/29}{Email is now clickable}
 % Typesetting authors' addresses in the footnote style
 %    \begin{macrocode}
 \def\@mkauthorsaddresses{%
@@ -7570,7 +7601,7 @@
   \def\country##1{\unskip, ##1}%
   \def\and{\unskip; \gdef\@ACM@institution@separator{, }}%
   \def\@author##1{##1}%
-  \def\email##1##2{\unskip, \nolinkurl{##2}}%
+  \def\email##1##2{\unskip, \href{mailto:##2}{##2}}%
   \addresses
   \egroup}
 %    \end{macrocode}
