@@ -117,6 +117,7 @@
 %  Ulrike Fischer,
 %  Jason Hemann,
 %  Peter Kemp,
+%  David F. Kotz,
 %  Luis Leiva,
 %  Ben Liblit,
 %  Rholais Lii,
@@ -2399,7 +2400,7 @@
 %</gobble>
 %<class&!tagged>\ProvidesClass{acmart}
 %<tagged>\ProvidesClass{acmart-tagged}
-[2026/05/23 v3.00 Typesetting articles for the Association for Computing Machinery]
+[2026/05/23 v2.18 Typesetting articles for the Association for Computing Machinery]
 %    \end{macrocode}
 %
 % \changes{v1.00}{2016/04/14}{First released version}
@@ -2518,10 +2519,12 @@
 % \changes{v2.03}{2024/02/04}{Added documentation about samples}
 % \changes{v2.17}{2025/11/01}{Rearranged documentation}
 % \changes{v2.17}{2025/11/01}{Added tagging documentation}
-% \changes{v3.00}{2026/05/23}{Merged tagged branch}
-% \changes{v3.00}{2026/05/23}{Keywords are now deprecated.  Deleted
+% \changes{v2.18}{2026/05/23}{Merged tagged branch}
+% \changes{v2.18}{2026/05/23}{Keywords are now deprecated.  Deleted
 % them from the samples}
-% \changes{v3.00}{2026/05/23}{Revised documentation}
+% \changes{v2.18}{2026/05/23}{Revised documentation}
+% \changes{v2.18}{2026/05/31}{Moved note before url (suggested by
+% David F. Kotz)} 
 % 
 % And the driver code:
 %    \begin{macrocode}
@@ -4070,7 +4073,7 @@
 \fi
 %    \end{macrocode}
 %
-% \changes{v3.00}{2026/05/31}{Added pifont}
+% \changes{v2.18}{2026/05/31}{Added pifont}
 %    \begin{macrocode}
 \RequirePackage{pifont}
 %    \end{macrocode}
@@ -5409,7 +5412,7 @@
 % \end{macro}
 %
 % \begin{macro}{\correspondingauthor}
-% \changes{v3.00}{2026/05/31}{Added macro}
+% \changes{v2.18}{2026/05/31}{Added macro}
 % Mark the author as corresponding author
 %    \begin{macrocode}
 \newcommand\correspondingauthor{%
@@ -5420,7 +5423,7 @@
 % \end{macro}
 %
 % \begin{macro}{\@correspondingauthormark}
-% \changes{v3.00}{2026/05/31}{Added macro}
+% \changes{v2.18}{2026/05/31}{Added macro}
 % Print the envelope
 %    \begin{macrocode}
 \def\@correspondingauthormark{\g@addto@macro\@currentauthors{%
@@ -7426,7 +7429,7 @@
 % \changes{v1.36}{2017/05/12}{Added authorsperrow overrride}
 % \changes{v1.73}{2020/09/07}{Check the presence of required elements
 % for affiliations}
-% \changes{v3.00}{2026/05/29}{Email is now clickable}
+% \changes{v2.18}{2026/05/29}{Email is now clickable}
 % \changes{v1.78}{2021/05/16}{Unboxing \cs{mktitle@bx}}
 %   The |sigconf| version.  Here we use a centered design with each
 %   author in a separate box.
@@ -7507,7 +7510,7 @@
 % \changes{v1.36}{2017/05/12}{Added authorsperrow overrride}
 % \changes{v1.73}{2020/09/07}{Check the presence of required elements
 % for affiliations}
-% \changes{v3.00}{2026/05/29}{Email is now clickable}
+% \changes{v2.18}{2026/05/29}{Email is now clickable}
 %   The |sigchi-a| version.  We put authors in the main text with
 %   no more than 2 authors per line, unless overriden.
 %    \begin{macrocode}
@@ -7578,7 +7581,7 @@
 % \changes{v1.77}{2021/04/16}{New separator of institutions}
 % \changes{v2.06}{2024/04/13}{\cs{streetaddress} and \cs{postcode} now
 % produce warnings}
-% \changes{v3.00}{2026/05/29}{Email is now clickable}
+% \changes{v2.18}{2026/05/29}{Email is now clickable}
 % Typesetting authors' addresses in the footnote style
 %    \begin{macrocode}
 \def\@mkauthorsaddresses{%
