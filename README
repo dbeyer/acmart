@@ -12,6 +12,15 @@ The production version is the one on CTAN and ACM sites.
 
 Changes
 
+Version 2.18   2026-05-31
+               Bug fixes
+	       Deleted IMS designation from journals
+	       Deprecated keywords
+	       Bibliography change: moved note before URL
+	       Merged tagging code into the main branch.
+	       New code for captions in the tagging version.
+	       
+
 Version 2.17   2026-03-28
 	       Bugs fixed
 
