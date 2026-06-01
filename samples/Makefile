@@ -67,6 +67,7 @@ docclean:
 	*.log *.aux *.out \
 	*.bbl *.blg *.cut *.toc \
 	acm-jdslogo.png \
+	*.bbx *.cbx *.dbx \
 	*.run.xml *.bcf *.html 
 
 clean: docclean
