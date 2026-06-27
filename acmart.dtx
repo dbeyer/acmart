@@ -1330,6 +1330,9 @@
 % }
 % \end{verbatim}
 % You must use \texttt{lualatex} to make the document fully tagged.
+% For some features you may need \texttt{lualatex-dev}.
+%
+%
 %
 % At present this code is still experimental.  If you use it, please
 % \emph{do not ask ACM for support}.  On the other hand, bug reports
@@ -1349,7 +1352,7 @@
 %\subsection{Figures and tables}
 %\label{sec:ug_floats}
 %
-% The new ACM styles use the standard \LaTeX\ interface for figures and
+% ACM styles use the standard \LaTeX\ interface for figures and
 % tables.  There are some important items to be aware of, however.
 %
 % \begin{enumerate}
@@ -1426,6 +1429,14 @@
 % (for example, when you use several subimages per figure) you may
 % need to override this.  A good way to do so is to put the contents
 % into a \cs{minipage} of the width \cs{columnwidth}.
+%
+% If tagging is enabled (see Section~\ref{sec:ug-tagging}), it assumes
+% that the first row of table contains headers.  To change this
+% assumption, use \c{tagpdfsetup}, for example, if you have two rows
+% of headers,
+% \begin{verbatim}
+% \tagpdfsetup{table/header-rows={1,2}}
+% \end{verbatim}
 %
 %
 %\subsection{Descriptions of images}
@@ -2571,7 +2582,7 @@
 %    \end{macrocode}
 %
 %
-%\subsection{Tagging and old package}
+%\subsection{Tagging and old kernels}
 %\label{sec:tagging}
 %
 % We want to use \cs{DocumentMetadata} command, but what with the old
@@ -4266,7 +4277,13 @@
 \ExplSyntaxOff
 %    \end{macrocode}
 %
-% 
+% \changes{v1.19}{2026-06-27}{Tagging code for tables}
+% By default the first row of a table contains headers
+%    \begin{macrocode}
+\IfDocumentMetadataT{%
+  \tagpdfsetup{table/header-rows={1}}
+}
+%    \end{macrocode}
 %
 % \begin{macro}{sidebar}
 %   The |sidebar| environment:
