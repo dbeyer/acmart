@@ -1710,7 +1710,11 @@
 % \end{verbatim}
 % Normally the printing of URL is suppressed if DOI is present.
 % However, there is a special field \path{distinctURL}.  If it is
-% present and is not zero, URL is printed even if DOI is present.
+% present and has any value, URL is printed even if DOI is present,
+% for example,
+% \begin{verbatim}
+% distinctURL = 'true',
+% \end{verbatim}
 %
 % The dynamic nature of Internet makes URLs not permanent: sometimes
 % they disappear or change.  The problem of ``stale links'' exists
