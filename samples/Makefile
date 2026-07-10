@@ -61,6 +61,8 @@ acmsmall-tagged.pdf: ENGINE = lualatex-dev
 
 sigconf-tagged.pdf: ENGINE = lualatex-dev
 
+.PRECIOUS: ${TEX}
+
 docclean:
 	${RM} acmart.cls \
 	ACM-Reference-Format.bst \
