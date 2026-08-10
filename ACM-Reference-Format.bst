@@ -2052,7 +2052,7 @@ FUNCTION { calc.basic.label }
   duplicate$
   year empty.or.unknown
     { date empty.or.unknown
-        { "{[n.\,d.]}" }
+	{ "0000" }
 	{ date field.or.null purify$ #1 #4 substring$}
       if$
     }
@@ -2104,7 +2104,7 @@ FUNCTION { calc.label }
   %
   year empty.or.unknown
     { date empty.or.unknown
-        { "{[n.\,d.]}" }
+	{ "0000" }
 	{ date field.or.null purify$ #1 #4 substring$}
       if$
     }
@@ -2167,6 +2167,7 @@ FUNCTION { output.issue.doi.coden.isxn.lccn.url.eprint }
 
 FUNCTION { output.issue.doi.coden.isxn.lccn.url.eprint.note }
 { % enter with stack empty, return with empty string on stack
+  output.issue.doi.coden.isxn.lccn.url.eprint
   note empty.or.unknown
     { }
     {
@@ -2174,12 +2175,12 @@ FUNCTION { output.issue.doi.coden.isxn.lccn.url.eprint.note }
       output.note
     }
   if$
-  output.issue.doi.coden.isxn.lccn.url.eprint
   ""
 }
 
 FUNCTION { output.issue.doi.coden.isxn.lccn.url.eprint.note.check }
 { % enter with stack empty, return with empty string on stack
+  output.issue.doi.coden.isxn.lccn.url.eprint
   note empty.or.unknown
     { }
     {
@@ -2187,7 +2188,6 @@ FUNCTION { output.issue.doi.coden.isxn.lccn.url.eprint.note.check }
       output.note.check
     }
   if$
-  output.issue.doi.coden.isxn.lccn.url.eprint
   ""
 }
 
@@ -3087,14 +3087,30 @@ FUNCTION { forward.pass }
   % if two entries are the same (see presort)
 
   last.label
-  calc.basic.label year field.or.null purify$ #-1 #4 substring$ * % add year
+  calc.basic.label
+  year empty.or.unknown
+    { date empty.or.unknown
+        { "0000" * }
+	{ date field.or.null purify$ #1 #4 substring$ * }
+      if$
+    }
+    { year field.or.null purify$ #-1 #4 substring$ * }
+  if$
   #1 entry.max$ substring$ =     % are they equal?
      { last.extra.num #1 + 'last.extra.num :=
        last.extra.num int.to.chr$ 'extra.label :=
      }
      { "a" chr.to.int$ 'last.extra.num :=
        "" 'extra.label :=
-       calc.basic.label year field.or.null purify$ #-1 #4 substring$ * % add year
+       calc.basic.label
+       year empty.or.unknown
+         { date empty.or.unknown
+             { "0000" * }
+	     { date field.or.null purify$ #1 #4 substring$ * }
+           if$
+         }
+         { year field.or.null purify$ #-1 #4 substring$ * }
+       if$
        #1 entry.max$ substring$ 'last.label := % assign to last.label
      }
   if$
@@ -3206,6 +3222,10 @@ FUNCTION { begin.bib }
   "\providecommand\bibinfo[2]{#2}" writeln
   "\providecommand\natexlab[1]{#1}" writeln
   "\providecommand\showeprint[2][]{arXiv:#2}" writeln
+  "\makeatletter" writeln
+  "\@ifundefined{NAT@parse@date}{}{\let\NAT@parse@date@orig\NAT@parse@date}" writeln
+  "\@ifundefined{NAT@parse@date}{}{\def\NAT@parse@date#1#2#3#4#5#6@@{\NAT@parse@date@orig#1#2#3#4#5#6@@\def\NAT@tempyear{0000}\def\NAT@tempexlab{{?}}\ifx\NAT@year\NAT@tempyear\ifx\NAT@exlab\NAT@tempexlab\def\NAT@date{[n.\,d.]}\else\edef\NAT@date{[n.\,d.]\NAT@exlab}\fi\fi}}" writeln
+  "\makeatother" writeln
 }
 
 EXECUTE {begin.bib}
