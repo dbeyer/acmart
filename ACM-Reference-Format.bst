@@ -2,9 +2,9 @@
 %%% ====================================================================
 %%%  @BibTeX-style-file{
 %%%     author          = "Nelson H. F. Beebe, Boris Veytsman and Gerald Murray",
-%%%     version         = "2.1",
-%%%     acmart-version  = "1.90",
-%%%     date            = "Mar 26 2023",
+%%%     version         = "2.2",
+%%%     acmart-version  = "2.19",
+%%%     date            = "Aug 12 2026",
 %%%     filename        = "ACM-Reference-Format.bst",
 %%%     email           = "borisv@lk.net, boris@varphi.com",
 %%%     codetable       = "ISO/ASCII",
