@@ -293,6 +293,14 @@
 % |sample-acmtog-conf.tex| show how to enter conference information.
 % Note that you need to comment out |\acmJournal{...}| line for such
 % papers to get the conference information in the footers and headers.
+% The |acmtog| format then puts the conference name, date and venue
+% into the footers instead of the journal name, volume, issue and
+% article number.  The |acmsmall| format uses the headers and footers
+% of the proceedings formats: the conference name, date and venue in
+% the headers, and no folios, since the page numbers of such a paper
+% are assigned by the proceedings rather than by the article.  If you
+% do want the folios, say |\settopmatter{printfolios=true}| after
+% \cs{acmConference}.
 %
 % \begin{table}
 %   \centering
@@ -5070,7 +5078,19 @@
 % \changes{v2.02}{2024/01/06}{Moved here setting the conference title
 % for bibstrip}
 % \changes{v2.03}{2024/02/04}{Made setting bibstrip overriding journal}
-%   This is the conference command
+% \changes{v2.20}{2026/08/12}{Proceedings headers, footers and folios
+%   for acmsmall used for conference proceedings}
+%   This is the conference command.  The |acmsmall| format is used both
+%   for journals and for conference proceedings published as books.  In
+%   the latter case the paper has no journal name, volume, issue or
+%   article number, so we switch it to the headers and footers of the
+%   proceedings formats, and suppress the folios like these formats do:
+%   the page numbers of such a paper are assigned by the proceedings
+%   rather than by the article.  An author who wants the folios can say
+%   \cs{settopmatter}|{printfolios=true}| after \cs{acmConference}.
+%   The |acmtog| format keeps its own conference headers and footers:
+%   there a conference paper is published as a journal issue and does
+%   have an article number.
 %    \begin{macrocode}
 \newcommand\acmConference[4][]{%
   \gdef\acmConference@shortname{#1}%
@@ -5081,6 +5101,10 @@
     \gdef\acmConference@shortname{#2}%
   \fi
   \global\@ACM@journal@bibstripfalse
+  \ifnum\ACM@format@nr=1\relax % acmsmall
+    \global\@ACM@journal@bibstrip@or@togfalse
+    \settopmatter{printfolios=false}%
+  \fi
   \ifx\@acmBooktitle\@empty\relax
     \acmBooktitle{Proceedings of \acmConference@name
       \ifx\acmConference@name\acmConference@shortname\else
