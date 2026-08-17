@@ -12,6 +12,11 @@ The production version is the one on CTAN and ACM sites.
 
 Changes
 
+Version 2.20   2028-08-16
+               Conference proceedings in acmsmall now use conference
+	       headings
+	       Bug fixes
+
 Version 2.19   2026-06-27
                Re-added keywords to samples
 	       Tagging: defaults for tables
