@@ -34,9 +34,6 @@ acmguide.pdf: $(PACKAGE).dtx $(PACKAGE).cls
 %.cls:   %.ins %.dtx
 	pdflatex $<
 
-%-tagged.cls:   %.ins %.dtx
-	pdflatex $<
-
 
 tagged:
 	${MAKE} acmart.cls && cd samples && ${MAKE} acmsmall-tagged.pdf && ${MAKE} sigconf-tagged.pdf
@@ -68,9 +65,6 @@ distclean: clean
 #
 archive:  all clean
 	COPYFILE_DISABLE=1 tar -C .. -czvf ../$(PACKAGE).tgz --exclude '*~' --exclude '*.tgz' --exclude '*.zip'  --exclude CVS --exclude '.git*' --exclude LICENSE $(PACKAGE); mv ../$(PACKAGE).tgz .
-
-zip:  all clean
-	zip -r  $(PACKAGE).zip * -x '*~' -x '*.tgz' -x '*.zip' -x CVS -x 'CVS/*'
 
 # distros
 distros: all docclean
