@@ -1,5 +1,6 @@
 This package provides a class for typesetting publications of the
-Association for Computing Machinery.
+Association for Computing Machinery.  The package is maintained by
+Boris Veytsman <borisv@lk.net> and released under LPPL 1.3
 
 Your TeX distribution probably includes the latest released version of
 this package.  If you decide to install it yourself, please see the
