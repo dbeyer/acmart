@@ -8978,6 +8978,20 @@
 %
 % \end{macro}
 %
+% \begin{macro}{\showISBNx}
+% \begin{macro}{\showISBNxiii}
+% \changes{v2.19}{2026/08/04}{Added macros}
+% The bibliography style calls \cs{showISBNx} for a 10-digit
+% \textsc{isbn} and \cs{showISBNxiii} for a 13-digit one.
+%    \begin{macrocode}
+\newcommand\showISBNx[1]{ISBN~#1.}
+\newcommand\showISBNxiii[1]{ISBN-13~#1.}
+%    \end{macrocode}
+%
+% \end{macro}
+%
+% \end{macro}
+%
 %
 %\subsection{Index}
 %\label{sec:index}
